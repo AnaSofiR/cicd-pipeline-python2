@@ -30,7 +30,8 @@ def _secret_key() -> str:
 
 
 app = Flask(__name__)
-app.secret_key = _secret_key()
+# app.secret_key = _secret_key()
+app.secret_key = os.environ.get("FLASK_SECRET_KEY", "dev-only-insecure-key")
 csrf = CSRFProtect(app)
 
 
@@ -67,7 +68,13 @@ def index_post():
     """Procesa el envío del formulario y muestra el resultado."""
     return render_template("index.html", resultado=_resultado_from_post())
 
+@app.route("/health")
+def health():
+    return "OK", 200
 
 if __name__ == "__main__":  # pragma: no cover
     # Quita debug=True para producción
-    app.run(debug=True, port=5000, host="127.0.0.1")
+    app_port = int(os.environ.get("PORT", 5000))
+    app_debug = os.environ.get("DEBUG", False)
+    app.run(debug=app_debug, port=app_port, host="127.0.0.1")
+
