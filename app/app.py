@@ -68,13 +68,14 @@ def index_post():
     """Procesa el envío del formulario y muestra el resultado."""
     return render_template("index.html", resultado=_resultado_from_post())
 
+
 @app.route("/health")
 def health():
     return "OK", 200
+
 
 if __name__ == "__main__":  # pragma: no cover
     # Quita debug=True para producción
     app_port = int(os.environ.get("PORT", 5000))
     app_debug = os.environ.get("DEBUG", False)
     app.run(debug=app_debug, port=app_port, host="127.0.0.1")
-
