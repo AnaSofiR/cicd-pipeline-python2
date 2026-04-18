@@ -1,4 +1,4 @@
-"""Operaciones aritméticas básicas para la calculadora web."""
+"""Operaciones básicas para la calculadora web."""
 
 AUTORES = (
     "jsocampod@eafit.edu.co, asrodriguo@eafit.edu.co, "
