@@ -21,3 +21,6 @@ acceptance_coverage.xml
 
 # IDE
 .vscode/
+
+# secret key
+.cicd_pipeline_secret_key

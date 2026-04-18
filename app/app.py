@@ -30,7 +30,7 @@ def _secret_key() -> str:
 
 
 app = Flask(__name__)
-app.config["SECRET_KEY"] = _secret_key()
+app.secret_key = _secret_key()
 csrf = CSRFProtect(app)
 
 
